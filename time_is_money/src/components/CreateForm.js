@@ -8,26 +8,29 @@ const CreateForm = () => {
 
     const handleChange = (event) => {
         console.log(event.target.value);
-        setStockState({ ...stockState, [event.target.id]: event.target.value });
+        setStockState(stockState => { return {...stockState, [event.target.id]: event.target.value} });
+        console.log(event.target.id)
       };
 
     const handleSubmit = (event) => {
         event.preventDefault()
 
         const newStock = {
-            "ticker symbol": stockState.ticker_symbol,
-            name: stockState.name,
-            "current stock price": stockState.current_stock_price,
-            "purchase price": stockState.purchase_price,
-            "selling price": setStockState.selling_price,
-            "purchase date": setStockState.purchase_date,
-            "percent change": setStockState.percent_change
-            // "user": setStockState.user
+            "ticker_symbol": stockState.ticker_symbol,
+            "name": stockState.name,
+            "current_stock_price": parseInt(stockState.current_stock_price),
+            "purchase_price": parseInt(stockState.purchase_price),
+            "selling_price": parseInt(stockState.selling_price),
+            "purchase_date": stockState.purchase_date,
+            "percent_change": parseInt(stockState.percent_change),
+            "user": 1
         }
-
+        
+        console.log(newStock)
+        console.log(stockState)
         axios.post("http://localhost:8000/api/watchlists/", newStock, {
             method: "post",
-            credentials: "incldue",
+            credentials: "include",
             headers: {
                 'Content-Type':'application/json'
             }
@@ -35,6 +38,7 @@ const CreateForm = () => {
         .then((res) => {
             setStockState(res.data)
             console.log(res.data)
+            console.log(newStock)
         })
 
 
@@ -42,7 +46,7 @@ const CreateForm = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form noValidate onSubmit={handleSubmit}>
                 <h1 className="stock-title"> Add to WishList! </h1>
                 <div className="grid">
                 <label htmlFor="ticker_symbol" >
