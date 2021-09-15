@@ -21,26 +21,22 @@ axios.get(url)
     })
 }, []) 
 
-useEffect(() => {
-    const getStocks = async() => {
-        // const serverStocks = requestedStocks()
-        // setStocks(serverStocks)
-    }
-    setStocks()
-}, [])
+// useEffect(() => {
+//     const getStocks = async() => {
+//         // const serverStocks = requestedStocks()
+//         // setStocks(serverStocks)
+//     }
+//     setStocks()
+// }, [])
 
-// const requestedStocks = () => {
-//     const url = "http://localhost:8000/api/watchlists"
-//     axios.get(url)
-//         .then(res=> {
-//             console.log(res.data)
-//             setStocks(res.data)
-//             console.log("All stocks from Watchlist")
-//         })
-//         .catch(()=> {
-//             console.log("Error getting watchlist")
-//         })
-// }
+const onDelete = ((id, e) => {
+    e.preventDefault()
+    axios.delete(`http://localhost:8000/api/watchlists/${id}`)
+    console.log("You just deleted", id)
+
+})
+
+
 
 // // const addStock = () => {
 //     const addStockUrl = "http://localhost:8000/api/watchlists"
@@ -88,14 +84,14 @@ useEffect(() => {
                                     Percent Change: {stocks.percent_change}
                                 </li>
                                 <li>
-                                <a href={`/stock/${stocks._id}`}>
+                                <a href={`/watchlist/${stocks.id}`}>
                                     <button className="watchlist-edit">Edit Workout</button>
                                  </a>
                                 </li>
                                 <li>
-                                    <a href={`/dayView/`}>
+                                    <a href={`/watchlist/`}>
                                         <button
-                                            // onClick={(e) => onDelete(stocks._id, e)}
+                                            onClick={(e) => onDelete(stocks.id, e)}
                                             className="watchlist-delete"
                                             >
                                                 Delete Workout
