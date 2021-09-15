@@ -10,6 +10,7 @@ import Modal from "./components/Modal"
 import axios from "axios"
 import React, { Component } from "react";
 import CreateForm from './components/CreateForm';
+import EditForm from './components/EditForm';
 
 
 function App() {
@@ -25,6 +26,13 @@ function App() {
       <Route exact path="/stocks" component={Stocks} />
       <Route exact path="/modal" component={Modal} />
       <Route exact path="/form" component={CreateForm} />
+      <Route 
+      exact
+      path="/watchlist/:id"
+      render={(routerProps) => (
+        <EditForm match={routerProps.match} data={EditForm} />
+      )}
+      />
     </div>
   );
 }

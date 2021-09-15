@@ -95,6 +95,6 @@ const handleSubmit = (data) => {
             </ul>
         </div>
     )
-}
+    }
 
 export default Stocks
