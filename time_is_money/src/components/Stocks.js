@@ -1,49 +1,59 @@
-import React, {useState} from 'react'
-
-// import .axios from "axios"
+import React, {useState, useEffect} from 'react'
+import axios from "axios"
 
 const Stocks = () => {
 
 let initialState = {
     "status": "",
     "from": "",
-    "symbol": "",
-    "open": 0,
-    "high": 1,
-    "low": 1,
-    "close": 1,
-    "volume": 1,
-    "afterHours": 1,
-    "preMarket": 1
+    "input": "",
+    "open": "",
+    "high": "",
+    "low": "",
+    "close": "",
+    "volume": "",
+    "afterHours": "",
+    "preMarket": ""
 }
-const [symbol, setSymbol] = useState(initialState)
+const [input, setInput] = useState(initialState)
 const [data, setData] = useState(initialState)
 
+const axiosInstance = axios.create({
+    baseURL: "https://www.alphavantage.co/query"
+})
 
-let stockTicker = "AAPL"
-let date = "2020-10-14"
-
-const handleChange = (event) => {
-    setSymbol({...symbol, [event.target.id]:event.target.value})
+const getDailyChartForStock = (symbol) => {
+    return axiosInstance.get("", {
+        params: {
+            function: "TIME_SERIES_DAILY",
+            symbol,
+            apikey: "LC5Z4UX820R0C7WK"
+        }
+    })
 }
-// fetch(x)
-// .then(res => res.json())
-// .then(data => {
-    //         console.log(data)
-    //         setSymbol(data.symbol)
-    //         setData(data)
-    //     })
-    
-const handleSubmit = (data) => {
-    console.log(symbol)
-    console.log(data)
-    let openCloseByDate = `https://api.polygon.io/v1/open-close/${symbol.symbol}/${symbol.date}?adjusted=true&apiKey=TRt8UyeHwn1IR3pejphSpA0PDkFCf6JE`
-    data.preventDefault();
-    // console.log(input);
-    const searchedStock = {
-        // stockTicker: 
+
+useEffect(() => {
+    const fetchStockData = async () => {
+        const result = await getDailyChartForStock(input.input)
+        console.log(input)
+        console.log(result.data)
     }
 
+    fetchStockData()
+}, [])
+
+
+const handleChange = (event) => {
+    setInput({...input, [event.target.id]:event.target.value})
+}
+
+    
+const handleSubmit = (data) => {
+    console.log(input)
+    console.log(data)
+    let openCloseByDate = `https://api.polygon.io/v1/open-close/${input.input}/${input.date}?adjusted=true&apiKey=TRt8UyeHwn1IR3pejphSpA0PDkFCf6JE`
+    data.preventDefault();
+   
     fetch(openCloseByDate)
         .then(res => res.json())
         .then(data => {
@@ -56,12 +66,12 @@ const handleSubmit = (data) => {
     return (
         <div>
             {/* <h3>{data}</h3> */}
-            <h2> My Stocks </h2>
+            <h2> Stock Tracker </h2>
             <form onSubmit={handleSubmit}>
                 <label > 
                     Stock Ticker:
                 </label>
-                <input onChange={handleChange} id="symbol" type="text" placeholder="Ex: AAPL"/> 
+                <input onChange={handleChange} id="input" type="text" placeholder="Ex: AAPL"/> 
                 <label>
                     Date:
                 </label>
@@ -73,24 +83,27 @@ const handleSubmit = (data) => {
             </form>
             <ul>
                 <li>
-                    {symbol.high}
+                   Open: {data.open}
                 </li>
                 <li>
-                    {symbol.close}
+                    High: {data.high}
                 </li> 
                 <li>
-                    {/* {high} */}
+                    Low: {data.low}
                 </li> 
                 <li>
-                    {symbol.open}
+                    Close: {data.close}
+                </li> 
+                <li>
+                    Volume: {data.volume}
+                </li> 
+                <li>
+                   AfterHours: {data.afterHours}
+                </li> 
+                <li>
+                   PreMarket: {data.preMarket}
                 </li> <li>
-                    {/* {symbol} */}
-                </li> <li>
-                    {/* {symbol} */}
-                </li> <li>
-                    {/* {symbol} */}
-                </li> <li>
-                    {/* {symbol} */}
+                    {data.from}
                 </li>
             </ul>
         </div>

@@ -28,6 +28,26 @@
   color: #61dafb;
 }
 
+/* Create form */
+.create-form::before {
+  position: absolute;
+  content: "$";
+  padding-left: 4px;
+
+}
+
+.create-form input {
+  padding-left: 15px;
+}
+
+.create-form-percentage::after {
+  position: absolute;
+  content: "%"
+}
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

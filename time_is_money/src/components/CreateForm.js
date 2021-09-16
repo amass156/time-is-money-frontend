@@ -11,9 +11,15 @@ const CreateForm = () => {
         setStockState(stockState => { return {...stockState, [event.target.id]: event.target.value} });
         console.log(event.target.id)
       };
+      
+      const percentChange = () => {
+          let percentage = parseFloat(parseFloat((stockState.selling_price) - parseFloat(stockState.purchase_price)) / parseFloat(stockState.purchase_price) * 100)
+          return percentage
+      }
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
 
         const newStock = {
             "ticker_symbol": stockState.ticker_symbol,
@@ -22,7 +28,7 @@ const CreateForm = () => {
             "purchase_price": parseInt(stockState.purchase_price),
             "selling_price": parseInt(stockState.selling_price),
             "purchase_date": stockState.purchase_date,
-            "percent_change": parseInt(stockState.percent_change),
+            "percent_change": percentChange(),
             "user": 1
         }
         
@@ -43,13 +49,14 @@ const CreateForm = () => {
 
 
     }
+    console.log(percentChange())
 
     return (
         <div>
             <form noValidate onSubmit={handleSubmit}>
                 <h1 className="stock-title"> Add to WishList! </h1>
-                <div className="grid">
-                <label htmlFor="ticker_symbol" >
+                <div className="grid ">
+                    <label htmlFor="ticker_symbol" >
                         Ticker Symbol:
                     </label>
                     <input
@@ -72,41 +79,49 @@ const CreateForm = () => {
                         // value={stockState.name}
                         placeholder="Ex: Apple"
                     />
-                    <label htmlFor="current_stock_price">
-                    Current Stock Price:
-                    </label>
-                    <input
-                        name="current_stock_price"
-                        id="current_stock_price"
-                        type="number"
-                        onChange={handleChange}
-                        // value="comes from api"
-                        placeholder="Ex: $25.77"
-                    />
+                        <label htmlFor="current_stock_price" >
+                        Current Stock Price:
+                        </label>
+                    <div className="create-form">
+                        <input
+                            name="current_stock_price"
+                            id="current_stock_price"
+                            // className="create-form"
+                            type="number"
+                            onChange={handleChange}
+                            // value="comes from api"
+                            placeholder="Ex: $25.77"
+                        />
+                    </div>
 
                     <label htmlFor="purchase_price">
                     Purchase Price:
                     </label>
-                    <input
-                        name="purchase_price"
-                        id="purchase_price"
-                        type="number"
-                        onChange={handleChange}
-                        // value={stockState.sets}
-                        placeholder="Ex: $27.89"
-                    />
+                    <div className="create-form">
+                        <input
+                            name="purchase_price"
+                            id="purchase_price"
+                            type="number"
+                            onChange={handleChange}
+                            // value={stockState.sets}
+                            placeholder="Ex: $27.89"
+                        />
+                    </div>
 
                     <label htmlFor="selling_price">
                     Selling Price:
                     </label>
-                    <input
-                        name="selling_price"
-                        id="selling_price"
-                        type="number"
-                        onChange={handleChange}
-                        // value={stockState.description}
-                        placeholder="Ex: $45.22"
-                    />
+                    
+                    <div className="create-form">
+                        <input
+                            name="selling_price"
+                            id="selling_price"
+                            type="number"
+                            onChange={handleChange}
+                            // value={stockState.description}
+                            placeholder="Ex: $45.22"
+                        />
+                    </div>
 
                     <label htmlFor="purchase_date">
                     Purchase Date:
@@ -120,23 +135,25 @@ const CreateForm = () => {
                         placeholder="Ex: 2020-2-7"
                     />
 
-                    <label htmlFor="purchase_date">
+                    {/* <label htmlFor="purchase_date">
                     Percent Change:
                     </label>
-                    <input
-                        name="percent_change"
-                        id="percent_change"
-                        type="number"
-                        onChange={handleChange}
-                        // value={stockState.description}
-                        placeholder="Ex: 26%"
-                    />
+                    <div className= "create-form-percentage">
+                        <input
+                            name="percent_change"
+                            id="percent_change"
+                            type="number"
+                            onChange={handleChange}
+                            // value={stockState.description}
+                            placeholder="Ex: 26%"
+                        />
+                    </div> */}
 
                     <button type="submit" className="subBut">
                     Submit
                     </button>
-      </div>
-    </form>
+                </div>
+            </form>
         </div>
     )
 }

@@ -5,6 +5,11 @@ import axios from 'axios'
 const EditForm = ({match}) => {
     const [watchlistState, setWatchlistState] = useState([])
 
+    const percentChange = () => {
+        let percentage = parseFloat(parseFloat((watchlistState.selling_price) - parseFloat(watchlistState.purchase_price)) / parseFloat(watchlistState.purchase_price) * 100)
+        return percentage
+    }
+
     const handleChange = (event) => {
         setWatchlistState({...watchlistState, [event.target.id]: event.target.value})
     }
@@ -108,17 +113,19 @@ const EditForm = ({match}) => {
                         placeholder="Ex: 2020-2-7"
                     />
 
-                    <label htmlFor="purchase_date">
+                    {/* <label htmlFor="purchase_date">
                     Percent Change:
                     </label>
-                    <input
-                        name="percent_change"
-                        id="percent_change"
-                        type="number"
-                        onChange={handleChange}
-                        value={watchlistState.percent_change}
-                        placeholder="Ex: 26%"
-                    />
+                    <div className="create-form-percentage">
+                        <input
+                            name="percent_change"
+                            id="percent_change"
+                            type="number"
+                            onChange={handleChange}
+                            value={percentChange()}
+                            placeholder="Ex: 26%"
+                        />
+                    </div> */}
 
                     <button type="submit" className="subBut">
                     Submit

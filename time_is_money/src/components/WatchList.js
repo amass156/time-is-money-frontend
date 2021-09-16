@@ -29,11 +29,12 @@ axios.get(url)
 //     setStocks()
 // }, [])
 
+
 const onDelete = ((id, e) => {
     e.preventDefault()
     axios.delete(`http://localhost:8000/api/watchlists/${id}`)
     console.log("You just deleted", id)
-
+    setStocks(stocks => stocks.filter(stock => stock.id != id))
 })
 
 
@@ -50,7 +51,7 @@ const onDelete = ((id, e) => {
 //             console.log("Error getting watchlist")
 //         })
 // // }
-
+// console.log(stocks[0].forEach(stock => percentChange()))
     return (
         <div>
              <div className="watchlist-title">
@@ -77,11 +78,11 @@ const onDelete = ((id, e) => {
                                 <li>
                                     Selling Price:{stocks.selling_price}
                                 </li>
-                                <li>
+                                <li >
                                     Purchase Date: {stocks.purchase_date}
                                 </li>
-                                <li>
-                                    Percent Change: {stocks.percent_change}
+                                <li className="create-form-percentage">
+                                    Percent Change: {parseFloat(parseFloat((stocks.selling_price) - parseFloat(stocks.purchase_price)) / parseFloat(stocks.purchase_price) * 100)}
                                 </li>
                                 <li>
                                 <a href={`/watchlist/${stocks.id}`}>
