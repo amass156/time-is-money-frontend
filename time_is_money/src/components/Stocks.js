@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
+import { CanvasJSChart } from "canvasjs-react-charts"
+import { FormGroup } from 'reactstrap'
 
 const Stocks = () => {
 
@@ -17,12 +19,13 @@ let initialState = {
 }
 const [input, setInput] = useState(initialState)
 const [data, setData] = useState(initialState)
+const [stockData, setStockData] = useState([])
 
 const axiosInstance = axios.create({
     baseURL: "https://www.alphavantage.co/query"
 })
 
-const getDailyChartForStock = (symbol) => {
+  const getDailyChartForStock = (symbol) => {
     return axiosInstance.get("", {
         params: {
             function: "TIME_SERIES_DAILY",
@@ -34,13 +37,51 @@ const getDailyChartForStock = (symbol) => {
 
 useEffect(() => {
     const fetchStockData = async () => {
-        const result = await getDailyChartForStock(input.input)
-        console.log(input)
-        console.log(result.data)
+        const result = await getDailyChartForStock("TSLA")
+        // setStockData(formatStockData(result.data["Time Series (Daily)"]))
+        let stockChartX = []
+        let stockChartY =[]
+        let example = {
+            "1. open": "717.9600",
+            "2. high": "724.0000",
+            "3. low": "703.3501",
+            "4. close": "704.7400",
+           " 5. volume": "29436995"
+        }
+        // setStockData(example)
+
+        // console.log(formatStockData(result.data))
+        console.log(result.data["Time Series (Daily)"])
+        for (let key in result.data["Time Series (Daily)"]) {
+            // console.log(key)
+            stockChartX.push(key)
+            stockChartY.push(result.data["Time Series (Daily)"]
+            [key]["1. open"])
+        }
+        // console.log(stockChartY)
+        setStockData({
+                x: stockChartX,
+                y: stockChartY
+        })
     }
 
     fetchStockData()
 }, [])
+
+
+function formatStockData(stockData){
+    return stockData.map(entries => {
+        const [date, priceData] = entries
+
+        return {
+            date, 
+            open: Number(priceData["1, open"]),
+            high: Number(priceData["2, high"]),
+            low: Number(priceData["3, low"]),
+            close: Number(priceData["4, close"])
+        }
+    })
+}
 
 
 const handleChange = (event) => {
@@ -62,11 +103,16 @@ const handleSubmit = (data) => {
     })
 
 }
+// console.log(stockData)
+
 
     return (
         <div>
             {/* <h3>{data}</h3> */}
             <h2> Stock Tracker </h2>
+            <a href={`/form`}>
+                    <button className="add-stock">Add Stock</button>
+            </a>
             <form onSubmit={handleSubmit}>
                 <label > 
                     Stock Ticker:
@@ -80,8 +126,10 @@ const handleSubmit = (data) => {
                 <button type="submit" >
                     Submit
                 </button>
+
             </form>
-            <ul>
+               
+            <ul className="stock-ul">
                 <li>
                    Open: {data.open}
                 </li>
@@ -106,6 +154,26 @@ const handleSubmit = (data) => {
                     {data.from}
                 </li>
             </ul>
+            <CanvasJSChart
+                options={ {
+                    data: [
+                        {
+                            type: "candlestick",
+                            dataPoints: [
+                                {x: new Date(stockData.date), 
+                                y: [
+                                    stockData.open,
+                                    stockData.high,
+                                    stockData.low,
+                                    stockData.close
+                                ]
+                                } 
+                            ]
+                        } 
+                        ] 
+                    } 
+                }
+            />
         </div>
     )
     }

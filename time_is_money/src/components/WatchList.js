@@ -53,54 +53,79 @@ const onDelete = ((id, e) => {
 // // }
 // console.log(stocks[0].forEach(stock => percentChange()))
     return (
-        <div>
+        <div className="test">
              <div className="watchlist-title">
-               Watchlist
+               <h2> My Watchlist</h2>
             </div>
-            <div>
+                <ul className="watchlist-nav-ul">
+                    <li>
+                        Ticker Symbol
+                    </li>
+                    <li>
+                        Name
+                    </li>
+                    <li>
+                        Current Price
+                    </li>
+                    <li>
+                        Purchase Price
+                    </li>
+                    <li>
+                        Selling Price
+                    </li>
+                    <li>
+                        Purchase Date
+                    </li>
+                    <li>
+                        Percent Change
+                    </li>
+                </ul>
+            <div className="each-stock">
                 {stocks 
                     ? stocks.map((stocks) => {
                         return (
-                            <span className="watchlist-nav">
-                            <ul className="watchlist-ul">
-                                <li>
-                                    Ticker Symbol: {stocks.ticker_symbol}
-                                </li>
-                                <li>
-                                    Name: {stocks.name}
-                                </li>
-                                <li>
-                                    Current Stock Price: {stocks.current_stock_price}
-                                </li>
-                                <li>
-                                    Purchase Price: {stocks.purchase_price}
-                                </li>
-                                <li>
-                                    Selling Price:{stocks.selling_price}
-                                </li>
-                                <li >
-                                    Purchase Date: {stocks.purchase_date}
-                                </li>
-                                <li className="create-form-percentage">
-                                    Percent Change: {parseFloat(parseFloat((stocks.selling_price) - parseFloat(stocks.purchase_price)) / parseFloat(stocks.purchase_price) * 100)}
-                                </li>
-                                <li>
-                                <a href={`/watchlist/${stocks.id}`}>
-                                    <button className="watchlist-edit">Edit Workout</button>
-                                 </a>
-                                </li>
-                                <li>
-                                    <a href={`/watchlist/`}>
-                                        <button
-                                            onClick={(e) => onDelete(stocks.id, e)}
-                                            className="watchlist-delete"
-                                            >
-                                                Delete Workout
-                                        </button>
+                            <container className="watchlist-container">
+                                <span className="watchlist-nav">
+                                <ul className="watchlist-ul">
+                                    <li className="watchlist-ticker">
+                                        {stocks.ticker_symbol}
+                                    </li>
+                                    <li>
+                                        {stocks.name}
+                                    </li>
+                                    <li>
+                                        {stocks.current_stock_price}
+                                    </li>
+                                    <li>
+                                         {stocks.purchase_price}
+                                    </li>
+                                    <li>
+                                        {stocks.selling_price}
+                                    </li>
+                                    <li >
+                                         {stocks.purchase_date}
+                                    </li>
+                                    <li className="create-form-percentage">
+                                        {parseFloat(parseFloat((stocks.selling_price) - parseFloat(stocks.purchase_price)) / parseFloat(stocks.purchase_price) * 100).toFixed(2)}
+                                    </li>
+                                    <li>
+                                    <a href={`/watchlist/${stocks.id}`}>
+                                        <button className="watchlist-edit">Edit Stock</button>
                                     </a>
-                                </li>
-                            </ul>
-                        </span>
+                                    </li>
+                                    <li>
+                                        <a href={`/watchlist/`}>
+                                            <button
+                                                onClick={(e) => onDelete(stocks.id, e)}
+                                                className="watchlist-delete"
+                                                >
+                                                    Delete Stock
+                                            </button>
+                                        </a>
+                                    </li>
+                                </ul>
+                                </span>
+                            </container>
                         )
                     })
 

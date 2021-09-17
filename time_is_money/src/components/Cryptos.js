@@ -6,15 +6,8 @@ const Stocks = () => {
 
 let initialState = {
     "symbol": "",
-    // "from": "",
-    // "input": "",
     "open": "",
-    // "high": "",
-    // "low": "",
     "close": "",
-    // "volume": "",
-    // "afterHours": "",
-    // "preMarket": ""
 }
 const [input, setInput] = useState(initialState)
 const [data, setData] = useState(initialState)
