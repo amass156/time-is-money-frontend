@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import { Link, useHistory } from "react-router-dom"
+import { FormGroup } from 'reactstrap'
+
 
 
 // import .axios from "axios"
@@ -36,36 +38,46 @@ const handleSubmit = (data) => {
 }
 
     return (
-        <div>
-            <h2> Crypto Tracker </h2>
-            <Link to={`/`}>
-                <button className="see-stocks"> Track a Stock</button>
-            </Link>
-            <Link to={`/watchlist`}>
-                <button className="see-watchlist"> My Watchlist</button>
-            </Link>
-            <Link to={`/form`}>
-                    <button className="add-stock">Add Crypto</button>
-            </Link>
+        <div className="cryptos">
+            <h2 className="crypto-header"> Crypto Tracker </h2>
+            <div className="btns-cryptos">
+                <Link to={`/`}>
+                    <button className="see-stocks"> Track a Stock</button>
+                </Link>
+                    <Link to={`/watchlist`}>
+                        <button className="see-watchlist"> My Watchlist</button>
+                    </Link>
+                <Link to={`/form`}>
+                        <button className="add-stock">Add Crypto</button>
+                </Link>
+            </div>
             <form onSubmit={handleSubmit}>
-                <label > 
-                    From:
-                </label>
-                <input onChange={handleChange} id="from" type="text" placeholder="Ex: BTC"/> 
-                <label > 
-                    To:
-                </label>
-                <input onChange={handleChange} id="to" type="text" placeholder="Ex: USD"/> 
-                <label>
-                    Date:
-                </label>
-                <input onChange={handleChange} id="date" type="date"  />
+                <FormGroup className="ticker-group" >
+                    <label className="label" > 
+                        From:
+                    </label>
+                    <input className="form-control crypto-ticker" onChange={handleChange} id="from" type="text" placeholder="Ex: BTC"/> 
+                </FormGroup>
 
-                <button type="submit" >
-                    Submit
+                <FormGroup className="ticker-group">
+                    <label className="label" > 
+                        To:
+                    </label>
+                    <input className="form-control crypto-to" onChange={handleChange} id="to" type="text" placeholder="Ex: USD"/> 
+                </FormGroup>
+                <FormGroup className="ticker-group">
+                    <label className="label">
+                        Date:
+                    </label>
+                    <input className="form-control crypto-date" onChange={handleChange} id="date" type="date"  />
+
+                </FormGroup>
+
+                <button type="submit" className="btn btn-secondary" >
+                    Get Data
                 </button>
             </form>
-            <ul>
+            <ul className="crypto-ul">
                 <li>
                     Symbol: {data.symbol}
                 </li>

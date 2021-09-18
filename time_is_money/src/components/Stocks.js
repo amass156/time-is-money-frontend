@@ -88,44 +88,47 @@ const handleSubmit = (data) => {
         console.log(data)
         setData(data)
     })
-
-    // fetch(fetchStockData)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setStockData(data)
-    //     })
-
 }
-// console.log(stockData)
-
 
     return (
         <div>
-            {/* <h3>{data}</h3> */}
-            <h2> Stock Tracker </h2>
-            <Link to={`/cryptos`}>
-                <button className="see-crypto"> Track Crypto</button>
-            </Link>
-            <Link to={`/watchlist`}>
-                <button className="see-watchlist"> My Watchlist</button>
-            </Link>
-            <Link to={`/form`}>
-                    <button className="add-stock">Add Stock</button>
-            </Link>
+    
+            <h2 className="stock-title"> Stock Tracker </h2>
+            <div className="btns-stocks">
+                
+                <Link to={`/watchlist`}>
+                    <button className="see-watchlist"> My Watchlist</button>
+                </Link>
+               
+            </div>
             <form onSubmit={handleSubmit}>
-                <label > 
-                    Stock Ticker:
-                </label>
-                <input onChange={handleChange} id="input" type="text" placeholder="Ex: AAPL"/> 
-                <label>
-                    Date:
-                </label>
-                <input onChange={handleChange} id="date" type="date"  />
+                <FormGroup className="ticker-group">
+                    <label className="label ticks"> 
+                        Ticker:
+                    </label>
+                    <input className="form-control stock-stock-ticker" onChange={handleChange} id="input" type="text" placeholder="Ex: AAPL"/> 
+                </FormGroup>
+                <FormGroup className="ticker-group">
+                    <label className="label">
+                        Date :   
+                    </label>
+                    <input className="form-control stock-date" onChange={handleChange} id="date" type="date"  />
 
-                <button type="submit" >
-                    Submit
+                <button type="submit" className="btn btn-secondary submit">
+                    Get Data
                 </button>
+                </FormGroup>
             </form>
+            <div className="track-crypto-position">
+            <Link to={`/cryptos`}>
+                    <button className="see-crypto"> Track Crypto</button>
+                </Link>
+            </div>
+            <div className="add-stock-position">
+                <Link to={`/form`}>
+                    <button className="add-stock">Add Stock</button>
+                </Link>
+            </div>
                
             <ul className="stock-ul">
                 <li>

@@ -29,19 +29,21 @@ const onDelete = ((id, e) => {
 })
 
     return (
-        <div className="test">
+        <div className="watchlist">
              <div className="watchlist-title">
                <h2> My Watchlist</h2>
-               <Link to="/"> 
-                    <button>
-                        Track a Stock
-                    </button>
-               </Link>
-               <Link to="/cryptos"> 
-                    <button>
-                            Track a Crypto
-                    </button>
-               </Link>
+               <div className="watchlist-btns">
+                    <Link to="/"> 
+                            <button className="track-stock">
+                                Track a Stock
+                            </button>
+                    </Link>
+                    <Link to="/cryptos"> 
+                            <button className="track-crypto">
+                                    Track a Crypto
+                            </button>
+                    </Link>
+               </div>
             </div>
                 <ul className="watchlist-nav-ul">
                     <li>
