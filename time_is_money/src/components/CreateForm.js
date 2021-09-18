@@ -1,15 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { Link, useHistory } from "react-router-dom"
+import { FormGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap"
+
 
 const CreateForm = () => {
 
     const initialState = { ticker_symbol:'', name: '', current_stock_price:'', purchase_price:'', selling_price:'', purchase_date:'', percent_change:'' } //needs to add user
     const [stockState, setStockState] = useState(initialState)
-    const [showModal, setShowModal] = useState(false)
-
-    const openModal = () => {
-        setShowModal(show => !show)
-    }
+    let hisotry = useHistory()
 
     const handleChange = (event) => {
         console.log(event.target.value);
@@ -51,21 +50,24 @@ const CreateForm = () => {
             console.log(res.data)
             console.log(newStock)
         })
-
-
+        hisotry.push("/watchlist")
     }
     console.log(percentChange())
 
     return (
         <div>
+            <Modal isOpen={true} className="create-modal" > 
             <container className="modal-div">
                 <form noValidate onSubmit={handleSubmit}>
-                    <h1 className="stock-title"> Add to WishList! </h1>
+                    <ModalHeader>
+                        <h1 className="stock-title"> Add to Watchlist! </h1>
+                    </ModalHeader>
                     <div className="grid ">
                         <label htmlFor="ticker_symbol" >
                             Ticker Symbol:
                         </label>
                         <input
+                            className="form-control"
                             name="ticker_symbol"
                             id="ticker_symbol"
                             type="text"
@@ -78,6 +80,7 @@ const CreateForm = () => {
                             Name:
                         </label>
                         <input
+                            className="form-control"
                             name="name"
                             id="name"
                             type="text"
@@ -90,6 +93,7 @@ const CreateForm = () => {
                             </label>
                         <div className="create-form">
                             <input
+                                className="form-control"
                                 name="current_stock_price"
                                 id="current_stock_price"
                                 // className="create-form"
@@ -105,6 +109,7 @@ const CreateForm = () => {
                         </label>
                         <div className="create-form">
                             <input
+                                className="form-control"
                                 name="purchase_price"
                                 id="purchase_price"
                                 type="number"
@@ -120,11 +125,11 @@ const CreateForm = () => {
                         
                         <div className="create-form">
                             <input
+                                className="form-control"
                                 name="selling_price"
                                 id="selling_price"
                                 type="number"
                                 onChange={handleChange}
-                                // value={stockState.description}
                                 placeholder="Ex: $45.22"
                             />
                         </div>
@@ -133,37 +138,30 @@ const CreateForm = () => {
                         Purchase Date:
                         </label>
                         <input
+                            className="form-control"
                             name="purchase_date"
                             id="purchase_date"
                             type="date"
                             onChange={handleChange}
-                            // value={stockState.description}
                             placeholder="Ex: 2020-2-7"
                         />
+                        <ModalFooter>
+                        <Link to={"/"}>
+                        <button className="btn btn-danger">
+                                Cancel
+                            </button>
+                        </Link>
 
-                        {/* <label htmlFor="purchase_date">
-                        Percent Change:
-                        </label>
-                        <div className= "create-form-percentage">
-                            <input
-                                name="percent_change"
-                                id="percent_change"
-                                type="number"
-                                onChange={handleChange}
-                                // value={stockState.description}
-                                placeholder="Ex: 26%"
-                            />
-                        </div> */}
+                            <button type="submit" className="subBut btn btn-primary">
+                            Submit
+                            </button>
 
-                        <button type="submit" className="subBut">
-                        Submit
-                        </button>
+                        </ModalFooter>
                     </div>
                 </form>
-                <button onClick={openModal} className="modal-button">
-                        Im a modal button
-                </button>
+               
             </container>
+            </Modal>
         </div>
     )
 }

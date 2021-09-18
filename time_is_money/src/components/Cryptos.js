@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import { Link, useHistory } from "react-router-dom"
+
 
 // import .axios from "axios"
 
@@ -35,8 +37,16 @@ const handleSubmit = (data) => {
 
     return (
         <div>
-            {/* <h3>{data}</h3> */}
             <h2> Crypto Tracker </h2>
+            <Link to={`/`}>
+                <button className="see-stocks"> Track a Stock</button>
+            </Link>
+            <Link to={`/watchlist`}>
+                <button className="see-watchlist"> My Watchlist</button>
+            </Link>
+            <Link to={`/form`}>
+                    <button className="add-stock">Add Crypto</button>
+            </Link>
             <form onSubmit={handleSubmit}>
                 <label > 
                     From:
@@ -62,23 +72,11 @@ const handleSubmit = (data) => {
                 <li>
                    Open: {data.open}
                 </li> 
-                {/* <li>
-                    Low: {data.low}
-                </li>  */}
+            
                 <li>
                     Close: {data.close}
                 </li> 
-                {/* <li>
-                    Volume: {data.volume}
-                </li> 
-                <li>
-                   AfterHours: {data.afterHours}
-                </li> 
-                <li>
-                   PreMarket: {data.preMarket}
-                </li> <li>
-                    {data.from}
-                </li> */}
+               
             </ul>
         </div>
     )

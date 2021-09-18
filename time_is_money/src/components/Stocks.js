@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from "axios"
 import { CanvasJSChart } from "canvasjs-react-charts"
 import { FormGroup } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 const Stocks = () => {
 
@@ -35,53 +36,39 @@ const axiosInstance = axios.create({
     })
 }
 
+
 useEffect(() => {
+    
     const fetchStockData = async () => {
-        const result = await getDailyChartForStock("TSLA")
-        // setStockData(formatStockData(result.data["Time Series (Daily)"]))
+        const result = await getDailyChartForStock(input.input)
         let stockChartX = []
         let stockChartY =[]
-        let example = {
-            "1. open": "717.9600",
-            "2. high": "724.0000",
-            "3. low": "703.3501",
-            "4. close": "704.7400",
-           " 5. volume": "29436995"
-        }
-        // setStockData(example)
-
-        // console.log(formatStockData(result.data))
-        console.log(result.data["Time Series (Daily)"])
-        for (let key in result.data["Time Series (Daily)"]) {
-            // console.log(key)
+    
+        console.log(result.data)
+        for (let key in result.data["Time Series (Daily)"]) {            
             stockChartX.push(key)
-            stockChartY.push(result.data["Time Series (Daily)"]
-            [key]["1. open"])
+            
+            let quad = [
+                parseFloat(result.data["Time Series (Daily)"][key]["1. open"]),
+                parseFloat(result.data["Time Series (Daily)"][key]["2. high"]),
+                parseFloat(result.data["Time Series (Daily)"][key]["3. low"]),
+                parseFloat(result.data["Time Series (Daily)"][key]["4. close"]),
+            ]
+            stockChartY.push(quad)
         }
-        // console.log(stockChartY)
-        setStockData({
-                x: stockChartX,
-                y: stockChartY
-        })
+        let finalData = []
+        for (let i=0; i < stockChartX.length; i++) {
+        let dayData = {
+            x: new Date(stockChartX[i]),
+            y: stockChartY[i]
+        }
+        finalData.push(dayData)
     }
-
+        console.log(finalData)
+        setStockData(finalData)
+    }
     fetchStockData()
 }, [])
-
-
-function formatStockData(stockData){
-    return stockData.map(entries => {
-        const [date, priceData] = entries
-
-        return {
-            date, 
-            open: Number(priceData["1, open"]),
-            high: Number(priceData["2, high"]),
-            low: Number(priceData["3, low"]),
-            close: Number(priceData["4, close"])
-        }
-    })
-}
 
 
 const handleChange = (event) => {
@@ -102,6 +89,12 @@ const handleSubmit = (data) => {
         setData(data)
     })
 
+    // fetch(fetchStockData)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setStockData(data)
+    //     })
+
 }
 // console.log(stockData)
 
@@ -110,9 +103,15 @@ const handleSubmit = (data) => {
         <div>
             {/* <h3>{data}</h3> */}
             <h2> Stock Tracker </h2>
-            <a href={`/form`}>
+            <Link to={`/cryptos`}>
+                <button className="see-crypto"> Track Crypto</button>
+            </Link>
+            <Link to={`/watchlist`}>
+                <button className="see-watchlist"> My Watchlist</button>
+            </Link>
+            <Link to={`/form`}>
                     <button className="add-stock">Add Stock</button>
-            </a>
+            </Link>
             <form onSubmit={handleSubmit}>
                 <label > 
                     Stock Ticker:
@@ -126,7 +125,6 @@ const handleSubmit = (data) => {
                 <button type="submit" >
                     Submit
                 </button>
-
             </form>
                
             <ul className="stock-ul">
@@ -159,16 +157,7 @@ const handleSubmit = (data) => {
                     data: [
                         {
                             type: "candlestick",
-                            dataPoints: [
-                                {x: new Date(stockData.date), 
-                                y: [
-                                    stockData.open,
-                                    stockData.high,
-                                    stockData.low,
-                                    stockData.close
-                                ]
-                                } 
-                            ]
+                            dataPoints: stockData
                         } 
                         ] 
                     } 

@@ -134,6 +134,16 @@ background: linear-gradient(100deg, rgba(10, 47, 129, 0.822) 5%, orange)
   padding-bottom: 8vh;
 }
 
+/* Edit/Create Form */
+
+.edit-modal, .create-modal {
+  color: Black
+}
+
+.edit-label {
+  display: flex;
+  float:left;
+}
 
 @keyframes App-logo-spin {
   from {

@@ -20,11 +20,11 @@ function App() {
 
   return (
     <div className="App">
+      <Route exact path="/" component={Stocks} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/watchlist" component={WatchList} />
       <Route exact path="/cryptos" component={Cryptos} />
-      <Route exact path="/stocks" component={Stocks} />
       <Route exact path="/modal" component={Modal} />
       <Route exact path="/form" component={CreateForm} />
       <Route exact path="/chart" component={StockChart} />

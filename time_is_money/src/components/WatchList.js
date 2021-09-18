@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {React, useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 
 
 function WatchList() {
@@ -7,8 +8,6 @@ function WatchList() {
 const [stocks, setStocks] = useState('')
 
 useEffect(() => {
-//     axios.get('/location/')
-//     .then(res => setLocations(res.data));
 const url = "http://localhost:8000/api/watchlists"
 axios.get(url)
     .then(res=> {
@@ -21,14 +20,6 @@ axios.get(url)
     })
 }, []) 
 
-// useEffect(() => {
-//     const getStocks = async() => {
-//         // const serverStocks = requestedStocks()
-//         // setStocks(serverStocks)
-//     }
-//     setStocks()
-// }, [])
-
 
 const onDelete = ((id, e) => {
     e.preventDefault()
@@ -37,25 +28,20 @@ const onDelete = ((id, e) => {
     setStocks(stocks => stocks.filter(stock => stock.id != id))
 })
 
-
-
-// // const addStock = () => {
-//     const addStockUrl = "http://localhost:8000/api/watchlists"
-//     axios.get(url)
-//         .then(res=> {
-//             console.log(res.data)
-//             setStocks(res.data)
-//             console.log("All stocks from Watchlist")
-//         })
-//         .catch(()=> {
-//             console.log("Error getting watchlist")
-//         })
-// // }
-// console.log(stocks[0].forEach(stock => percentChange()))
     return (
         <div className="test">
              <div className="watchlist-title">
                <h2> My Watchlist</h2>
+               <Link to="/"> 
+                    <button>
+                        Track a Stock
+                    </button>
+               </Link>
+               <Link to="/cryptos"> 
+                    <button>
+                            Track a Crypto
+                    </button>
+               </Link>
             </div>
                 <ul className="watchlist-nav-ul">
                     <li>
