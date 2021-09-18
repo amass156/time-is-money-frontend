@@ -1,0 +1,281 @@
+.App {
+  text-align: center;
+  text-decoration: mintcream;
+  font-family: 'Slabo 27px', serif;
+  font-weight: 900;
+}
+
+body{
+  color: white;
+  background: linear-gradient(170deg,rgba(169, 144, 93, 1) 15%, rgb(247, 116, 83));
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* Modal  */
+.modal-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.modal-button {
+  min-width: 100px;
+  padding: 16px 32px;
+  border-radius: 4px;
+  border: none;
+  background: #141414;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer
+}
+
+/* Watchlist */
+.watchlist-title {
+  padding-bottom: 4vh;
+}
+
+.watchlist-nav-ul {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  padding-left: 4vw;
+  padding-right: 20vw;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.watchlist {
+  padding: 20px;
+  margin: 20px;
+  min-height: 100vh;
+}
+
+.watchlist-ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px 20px;
+  border-top: 4px solid rgb(255, 247, 211);
+  color: white;
+  margin: 0
+}
+
+.watchlist-ul li {
+  border: black;
+}
+
+.each-stock {
+  padding: 20px 50px;
+}
+
+.watchlist-container li {
+  width: 25%;
+  height: 42px;
+}
+
+.watchlist-delete {
+border-radius: 6px;
+background: linear-gradient(100deg,red 5%, orange);
+color: rgba(90, 10, 71, 0.884);
+}
+
+.watchlist-edit {
+border-radius: 6px;
+background: linear-gradient(100deg, rgba(10, 47, 129, 0.822) 5%, orange)
+}
+
+.watchlist-btns {
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.track-stock {
+  border-radius: 6px;
+  background: linear-gradient(100deg,red 5%, yellow, purple);
+  color: rgba(90, 10, 71, 0.884);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.track-crypto {
+  border-radius: 6px;
+  background: linear-gradient(35deg, rgb(0, 60, 255), rgb(72, 255, 0), purple);
+  color: rgba(61, 53, 59, 0.884);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* Create form */
+.create-form::before {
+  position: absolute;
+  content: "$";
+  padding-left: 4px;
+
+}
+
+.create-form input {
+  padding-left: 15px;
+}
+
+.create-form-percentage::after {
+  position: absolute;
+  content: "%"
+}
+
+/* Stocks */
+.stock-ul {
+  list-style-type: none;
+  padding-bottom: 8vh;
+}
+
+.see-crypto {
+  border-radius: 6px;
+  background: linear-gradient(-100deg,red , yellow , green);
+  color: rgba(90, 10, 71, 0.884);
+  font-size: 17px;
+  font-weight: bold;
+
+}
+
+.see-watchlist {
+  border-radius: 6px;
+  background: linear-gradient(45deg,red , rgb(255, 174, 0), purple);
+  color: rgba(90, 10, 71, 0.884);
+  font-size: 17px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.add-stock {
+  border-radius: 6px;
+  background: linear-gradient(45deg,red 5%, blue);
+  color: rgba(209, 197, 206, 0.884);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.btns-stocks {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0px;
+}
+
+.add-stock-position {
+  float: right;
+  margin-right: 65px;
+}
+
+.track-crypto-position {
+  float:left;
+  margin-left: 65px;
+}
+
+.stock-ul, .crypto-ul {
+  padding-top: 35px;
+  font-size: 20px;
+}
+
+.stock-stock-ticker{
+  width:25%;
+}
+
+.stock-date{
+  width: 20%;
+}
+
+.ticker-group {
+  display: flex;
+  justify-content:center;
+  padding: 15px 0px;
+}
+
+.submit {
+  padding-left: 10px;
+}
+
+/* Edit/Create Form */
+
+.edit-modal, .create-modal {
+  color: Black
+}
+
+.edit-label {
+  display: flex;
+  float:left;
+}
+.label {
+  font-size: 20px;
+  /* font-weight: bold; */
+}
+
+/* Cryptos */
+.cryptos {
+  background: linear-gradient(170deg,rgba(169, 144, 93, 1) 15%, rgb(247, 116, 83));
+  min-height: 100vh;
+}
+
+.crypto-ticker, .crypto-date {
+  width: 20%
+}
+
+.crypto-to {
+  width: 21%;
+}
+
+.btns-cryptos {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0px
+}
+
+.crypto-header, .stock-title {
+  padding-top: 20px;
+}
+
+.see-stocks {
+  border-radius: 6px;
+  background: linear-gradient(100deg,red 5%, yellow);
+  color: rgba(90, 10, 71, 0.884);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
