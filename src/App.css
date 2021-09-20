@@ -7,7 +7,7 @@
 
 body{
   color: white;
-  background: linear-gradient(170deg,rgba(169, 144, 93, 1) 15%, rgb(247, 116, 83));
+  background: linear-gradient(170deg,rgb(184, 140, 59) 15%, rgba(128, 126, 126, 0.877));
 }
 
 .App-logo {
