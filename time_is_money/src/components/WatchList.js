@@ -47,25 +47,25 @@ const onDelete = ((id, e) => {
             </div>
                 <ul className="watchlist-nav-ul">
                     <li>
-                        Ticker Symbol
+                        Ticker Symbol |
                     </li>
                     <li>
-                        Name
+                        Name |
                     </li>
                     <li>
-                        Current Price
+                        Current Price |
                     </li>
                     <li>
-                        Purchase Price
+                        Purchase Price |
                     </li>
                     <li>
-                        Selling Price
+                        Selling Price |
                     </li>
                     <li>
-                        Purchase Date
+                        Purchase Date |
                     </li>
                     <li>
-                        Percent Change
+                        Percent Change 
                     </li>
                 </ul>
             <div className="each-stock">

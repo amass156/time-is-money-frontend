@@ -36,7 +36,6 @@ const axiosInstance = axios.create({
     })
 }
 
-
 useEffect(() => {
     
     const fetchStockData = async () => {
@@ -75,7 +74,7 @@ const handleChange = (event) => {
     setInput({...input, [event.target.id]:event.target.value})
 }
 
-    
+
 const handleSubmit = (data) => {
     console.log(input)
     console.log(data)
