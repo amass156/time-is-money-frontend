@@ -2,8 +2,6 @@
   "name": "time_is_money",
   "version": "0.1.0",
   "private": true,
-  // "proxy": "http://localhost:8000",
-
 
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
