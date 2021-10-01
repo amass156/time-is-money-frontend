@@ -20,7 +20,7 @@ const EditForm = ({match}) => {
     useEffect(() => {
         const id = match.params.id
         console.log(id)
-        axios.get(`http://localhost:8000/api/watchlists/${id}`)
+        axios.get(`https://ancient-beyond-38651.herokuapp.com/api/watchlists/${id}/`)
         .then((res) => {
             console.log(res.data)
             setWatchlistState(res.data)
@@ -32,7 +32,7 @@ const EditForm = ({match}) => {
         console.log(watchlistState)
         const id = match.params.id
 
-        axios.put(`http://localhost:8000/api/watchlists/${id}/`, watchlistState)
+        axios.put(`https://ancient-beyond-38651.herokuapp.com/api/watchlists/${id}/`, watchlistState)
         .then((res) => {
             console.log(res.data)
             setWatchlistState(res.data)

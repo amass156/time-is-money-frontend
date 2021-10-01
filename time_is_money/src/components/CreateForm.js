@@ -38,7 +38,7 @@ const CreateForm = () => {
         
         console.log(newStock)
         console.log(stockState)
-        axios.post("http://localhost:8000/api/watchlists/", newStock, {
+        axios.post("https://ancient-beyond-38651.herokuapp.com/api/watchlists/", newStock, {
             method: "post",
             credentials: "include",
             headers: {
