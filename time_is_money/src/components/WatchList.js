@@ -8,7 +8,8 @@ function WatchList() {
 const [stocks, setStocks] = useState('')
 
 useEffect(() => {
-const url = "http://localhost:8000/api/watchlists"
+// const url = "http://localhost:8000/api/watchlists"
+const url = "https://ancient-beyond-38651.herokuapp.com/api/watchlists/"
 axios.get(url)
     .then(res=> {
         console.log(res.data)
@@ -23,7 +24,7 @@ axios.get(url)
 
 const onDelete = ((id, e) => {
     e.preventDefault()
-    axios.delete(`http://localhost:8000/api/watchlists/${id}`)
+    axios.delete(`https://ancient-beyond-38651.herokuapp.com/api/watchlists/${id}`)
     console.log("You just deleted", id)
     setStocks(stocks => stocks.filter(stock => stock.id != id))
 })
