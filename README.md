@@ -4,7 +4,9 @@
 Time is Money is a stock/crytpo tracker that helps users keep track of the market as well as their money. Users are able to search their desired stock or crypto currency and get back information of their commodity by date. For the stock tracker, the user also gets back a graph of 100 trading dates (about 4 months) that shows the open, high, low, and close of the searched stock. 
 
 Visit my project: 
+
 https://time-is-money-frontend.herokuapp.com/
+
 https://ancient-beyond-38651.herokuapp.com/api/
 
 #### User Stories
