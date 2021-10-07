@@ -3,21 +3,7 @@ import {getDailyChartForStock} from "./Stocks"
 const StockChart = () => {
 
     const [stockData, setStockData] = useState([])
-    // useEffect(() => {
-    //     const fetchStockData = async () => {
-    //         const result = await getDailyChartForStock(input.input)
-            
-    //         setStockData(formatStockData(result.data["Time Series (Daily)"]))
-
-    //         console.log(result.data)
-    //     }
     
-    //     fetchStockData()
-    // }, [])
-
-    // console.log(StockData)
-
-
     function formatStockData(stockData){
         return Object.entries(stockData.map(entries => {
             const [date, priceData] = entries

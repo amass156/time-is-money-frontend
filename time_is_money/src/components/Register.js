@@ -9,15 +9,12 @@ const Register = () => {
         password: "",
       };
       const [input, setInput] = useState(initialState);
-    
       const [message, setMessage] = useState(null);
-    
       const [status, setStatus] = useState("failed");
-    
+
       const handleChange = (event) => {
         setInput({ ...input, [event.target.id]: event.target.value });
       };
-    
     
       const handleSubmit = (data) => {
         data.preventDefault();
@@ -51,44 +48,44 @@ const Register = () => {
         <div>
           <h3 className="regTitle">Register </h3>
           <form onSubmit={handleSubmit}>
-            <div className="grid">
-              <label htmlFor="name" className="nameLabel">
-                Name:
-              </label>
-              <input
-                onChange={handleChange}
-                type="text"
-                // value={input.name}
-                placeholder="Ex: Firstname LastName"
-                id="name"
-                name="name"
-              />
-              <label htmlFor="username" className="userLabel">
-                Username:
-              </label>
-              <input
-                onChange={handleChange}
-                type="text"
-                // value={input.username}
-                placeholder="Ex: Hodl55"
-                id="username"
-                name="username" 
-              />
-              <label htmlFor="password" className="passLabel">
-                Password:
-              </label>
-              <input
-                onChange={handleChange}
-                type="text"
-                // value={input.password}
-                placeholder="Ex: ABcd1234"
-                id="password"
-                name="password" 
-              />
-              <input className="subBut" type="submit" />
-            </div>
+              <div className="grid">
+                  <label htmlFor="name" className="nameLabel">
+                    Name:
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    // value={input.name}
+                    placeholder="Ex: Firstname LastName"
+                    id="name"
+                    name="name"
+                  />
+                  <label htmlFor="username" className="userLabel">
+                    Username:
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    // value={input.username}
+                    placeholder="Ex: Hodl55"
+                    id="username"
+                    name="username" 
+                  />
+                  <label htmlFor="password" className="passLabel">
+                    Password:
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    // value={input.password}
+                    placeholder="Ex: ABcd1234"
+                    id="password"
+                    name="password" 
+                  />
+                  <input className="subBut" type="submit" />
+              </div>
           </form>
-          </div>
+        </div>
     )
 }
 

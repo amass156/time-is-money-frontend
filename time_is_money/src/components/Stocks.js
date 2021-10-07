@@ -91,14 +91,11 @@ const handleSubmit = (data) => {
 
     return (
         <div>
-    
             <h2 className="stock-title"> Stock Tracker </h2>
             <div className="btns-stocks">
-                
                 <Link to={`/watchlist`}>
                     <button className="see-watchlist"> My Watchlist</button>
                 </Link>
-               
             </div>
             <form onSubmit={handleSubmit}>
                 <FormGroup className="ticker-group">
@@ -113,13 +110,13 @@ const handleSubmit = (data) => {
                     </label>
                     <input className="form-control stock-date" onChange={handleChange} id="date" type="date"  />
 
-                <button type="submit" className="btn btn-secondary submit">
-                    Get Data
-                </button>
+                    <button type="submit" className="btn btn-secondary submit">
+                        Get Data
+                    </button>
                 </FormGroup>
             </form>
             <div className="track-crypto-position">
-            <Link to={`/cryptos`}>
+                <Link to={`/cryptos`}>
                     <button className="see-crypto"> Track Crypto</button>
                 </Link>
             </div>

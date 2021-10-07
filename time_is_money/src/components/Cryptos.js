@@ -2,10 +2,6 @@ import React, {useState} from 'react'
 import { Link, useHistory } from "react-router-dom"
 import { FormGroup } from 'reactstrap'
 
-
-
-// import .axios from "axios"
-
 const Stocks = () => {
 
 let initialState = {
@@ -16,11 +12,9 @@ let initialState = {
 const [input, setInput] = useState(initialState)
 const [data, setData] = useState(initialState)
 
-
 const handleChange = (event) => {
     setInput({...input, [event.target.id]:event.target.value})
 }
-
     
 const handleSubmit = (data) => {
     console.log(input.from)
@@ -44,9 +38,9 @@ const handleSubmit = (data) => {
                 <Link to={`/`}>
                     <button className="see-stocks"> Track a Stock</button>
                 </Link>
-                    <Link to={`/watchlist`}>
-                        <button className="see-watchlist"> My Watchlist</button>
-                    </Link>
+                <Link to={`/watchlist`}>
+                    <button className="see-watchlist"> My Watchlist</button>
+                </Link>
                 <Link to={`/form`}>
                         <button className="add-stock">Add Crypto</button>
                 </Link>
@@ -88,7 +82,6 @@ const handleSubmit = (data) => {
                 <li>
                     Close: {data.close}
                 </li> 
-               
             </ul>
         </div>
     )
