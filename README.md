@@ -32,15 +32,21 @@ One of the blockers that I had to overcome was successfully getting the data to 
 
 #### WireFrames
 ---
-Crypto Tracker Screen
-<img width="430" alt="Screen Shot 2021-09-20 at 5 39 28 PM" src="https://media.git.generalassemb.ly/user/35484/files/34ecc400-1a3a-11ec-9eee-38867fa11d99">
-
-Stock Tracker Screen
-<img width="430" alt="Screen Shot 2021-09-20 at 5 40 38 PM" src="https://media.git.generalassemb.ly/user/35484/files/4766fd80-1a3a-11ec-9b13-b9ce8b73ce5b">
-
 User Watchlist Screen
+
 <img width="430" alt="Screen Shot 2021-09-20 at 5 41 47 PM" src="https://media.git.generalassemb.ly/user/35484/files/5fd71800-1a3a-11ec-8864-a0d11b8f9a10">
 
+Stock Tracker Screen
+
+<img width="430" alt="Screen Shot 2021-09-20 at 5 40 38 PM" src="https://media.git.generalassemb.ly/user/35484/files/4766fd80-1a3a-11ec-9b13-b9ce8b73ce5b">
+
+Crypto Tracker Screen
+
+<img width="430" alt="Screen Shot 2021-09-20 at 5 39 28 PM" src="https://media.git.generalassemb.ly/user/35484/files/34ecc400-1a3a-11ec-9eee-38867fa11d99">
+
+Create/Edit Modal
+
+<img width="430" alt="[Screen Shot 2021-10-06 at 6 00 30 PM" src="https://user-images.githubusercontent.com/81110589/136302357-4ed09a70-10d7-423a-b668-5a5aa7f983ca.png">
 
 #### Future Modifications
 ---
